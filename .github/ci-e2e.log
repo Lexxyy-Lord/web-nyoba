@@ -1,0 +1,91 @@
+
+> otpmarket@1.0.0 test:e2e
+> playwright test
+
+
+Running 8 tests using 1 worker
+
+[1/8] [chromium] › tests/e2e/auth-and-purchase.spec.ts:19:5 › register, admin credit, mock purchase, and OTP order flow
+[2/8] (retries) [chromium] › tests/e2e/auth-and-purchase.spec.ts:19:5 › register, admin credit, mock purchase, and OTP order flow (retry #1)
+  1) [chromium] › tests/e2e/auth-and-purchase.spec.ts:19:5 › register, admin credit, mock purchase, and OTP order flow 
+
+    Error: expect(page).toHaveURL(expected) failed
+
+    Expected pattern: /dashboard/
+    Received string:  "http://127.0.0.1:3000/register"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toHaveURL" with timeout 5000ms
+        14 × locator resolved to <html lang="id" class="light">…</html>
+           - unexpected value "http://127.0.0.1:3000/register"
+
+
+      32 |   await page.getByText("Saya menyetujui").click();
+      33 |   await page.getByRole("button", { name: "Buat akun" }).click();
+    > 34 |   await expect(page).toHaveURL(/dashboard/);
+         |                      ^
+      35 |
+      36 |   const user = await prisma.user.findUnique({ where: { email } });
+      37 |   expect(user).not.toBeNull();
+        at /home/runner/work/web-nyoba/web-nyoba/tests/e2e/auth-and-purchase.spec.ts:34:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium/error-context.md
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(page).toHaveURL(expected) failed
+
+    Expected pattern: /dashboard/
+    Received string:  "http://127.0.0.1:3000/register"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toHaveURL" with timeout 5000ms
+        14 × locator resolved to <html lang="id" class="light">…</html>
+           - unexpected value "http://127.0.0.1:3000/register"
+
+
+      32 |   await page.getByText("Saya menyetujui").click();
+      33 |   await page.getByRole("button", { name: "Buat akun" }).click();
+    > 34 |   await expect(page).toHaveURL(/dashboard/);
+         |                      ^
+      35 |
+      36 |   const user = await prisma.user.findUnique({ where: { email } });
+      37 |   expect(user).not.toBeNull();
+        at /home/runner/work/web-nyoba/web-nyoba/tests/e2e/auth-and-purchase.spec.ts:34:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/error-context.md
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[3/8] [chromium] › tests/e2e/responsive.spec.ts:4:7 › / has no horizontal overflow
+[4/8] [chromium] › tests/e2e/responsive.spec.ts:4:7 › /login has no horizontal overflow
+[5/8] [chromium] › tests/e2e/responsive.spec.ts:4:7 › /register has no horizontal overflow
+[6/8] [mobile] › tests/e2e/auth-and-purchase.spec.ts:19:5 › register, admin credit, mock purchase, and OTP order flow
+[7/8] [mobile] › tests/e2e/responsive.spec.ts:4:7 › / has no horizontal overflow
+[8/8] [mobile] › tests/e2e/responsive.spec.ts:4:7 › /login has no horizontal overflow
+[9/8] [mobile] › tests/e2e/responsive.spec.ts:4:7 › /register has no horizontal overflow
+  1 failed
+    [chromium] › tests/e2e/auth-and-purchase.spec.ts:19:5 › register, admin credit, mock purchase, and OTP order flow 
+  1 skipped
+  6 passed (19.1s)
