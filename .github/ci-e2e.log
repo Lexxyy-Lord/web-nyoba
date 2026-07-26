@@ -1,0 +1,97 @@
+
+> otpmarket@1.0.0 test:e2e
+> playwright test
+
+
+Running 8 tests using 2 workers
+[WebServer] ⚠ Blocked cross-origin request to Next.js dev resource /_next/webpack-hmr from "127.0.0.1".
+[WebServer] Cross-origin access to Next.js dev resources is blocked by default for safety.
+[WebServer] 
+[WebServer] To allow this host in development, add it to "allowedDevOrigins" in next.config.js and restart the dev server:
+[WebServer] 
+[WebServer] // next.config.js
+[WebServer] module.exports = {
+[WebServer]   allowedDevOrigins: ['127.0.0.1'],
+[WebServer] }
+[WebServer] 
+[WebServer] Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+···°···××T
+
+  1) [chromium] › tests/e2e/auth-and-purchase.spec.ts:19:5 › register, admin credit, mock purchase, and OTP order flow 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Nama lengkap')
+
+
+      25 |
+      26 |   await page.goto("/register");
+    > 27 |   await page.getByLabel("Nama lengkap").fill("E2E User");
+         |                                         ^
+      28 |   await page.getByLabel("Username").fill(username);
+      29 |   await page.getByLabel("Email").fill(email);
+      30 |   await page.getByLabel("Password", { exact: true }).fill(password);
+        at /home/runner/work/web-nyoba/web-nyoba/tests/e2e/auth-and-purchase.spec.ts:27:41
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium/error-context.md
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Nama lengkap')
+
+
+      25 |
+      26 |   await page.goto("/register");
+    > 27 |   await page.getByLabel("Nama lengkap").fill("E2E User");
+         |                                         ^
+      28 |   await page.getByLabel("Username").fill(username);
+      29 |   await page.getByLabel("Email").fill(email);
+      30 |   await page.getByLabel("Password", { exact: true }).fill(password);
+        at /home/runner/work/web-nyoba/web-nyoba/tests/e2e/auth-and-purchase.spec.ts:27:41
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/error-context.md
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Nama lengkap')
+
+
+      25 |
+      26 |   await page.goto("/register");
+    > 27 |   await page.getByLabel("Nama lengkap").fill("E2E User");
+         |                                         ^
+      28 |   await page.getByLabel("Username").fill(username);
+      29 |   await page.getByLabel("Email").fill(email);
+      30 |   await page.getByLabel("Password", { exact: true }).fill(password);
+        at /home/runner/work/web-nyoba/web-nyoba/tests/e2e/auth-and-purchase.spec.ts:27:41
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry2/error-context.md
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry2/error-context.md
+
+  1 failed
+    [chromium] › tests/e2e/auth-and-purchase.spec.ts:19:5 › register, admin credit, mock purchase, and OTP order flow 
+  1 skipped
+  6 passed (1.6m)
