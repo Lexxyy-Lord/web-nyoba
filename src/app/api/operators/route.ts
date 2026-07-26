@@ -1,0 +1,23 @@
+import { NextRequest } from "next/server";
+import { z } from "zod";
+import { requireApiUser } from "@/lib/auth/guards";
+import { fail, ok } from "@/lib/http";
+import { rumahOtp } from "@/lib/rumahotp/services";
+
+const querySchema = z.object({
+  country: z.string().trim().min(1),
+  providerId: z.string().trim().min(1),
+});
+
+export async function GET(request: NextRequest) {
+  try {
+    await requireApiUser();
+    const query = querySchema.parse(
+      Object.fromEntries(request.nextUrl.searchParams),
+    );
+
+    return ok(await rumahOtp.getOperators(query.country, query.providerId));
+  } catch (error) {
+    return fail(error);
+  }
+}

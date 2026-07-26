@@ -1,0 +1,5 @@
+export class RumahOtpError extends Error {
+  constructor(public code: string, message: string, public status?: number, public retryable = false) {
+    super(message);
+  }
+}

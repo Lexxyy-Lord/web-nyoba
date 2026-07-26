@@ -1,0 +1,1 @@
+export function LoadingSkeleton() { return <div className="space-y-4 animate-pulse"><div className="h-8 w-52 rounded bg-[var(--muted)]"/><div className="grid gap-4 md:grid-cols-3">{[1,2,3].map(i=><div key={i} className="h-32 rounded-2xl bg-[var(--muted)]"/>)}</div><div className="h-72 rounded-2xl bg-[var(--muted)]"/></div>; }

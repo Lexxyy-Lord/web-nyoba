@@ -1,0 +1,9 @@
+"use client";
+import { useState } from "react";
+import { MessageCircle, LoaderCircle } from "lucide-react";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { formatRupiah, parseRupiah } from "@/lib/money";
+export function DepositForm(){const [value,setValue]=useState("50000");const [loading,setLoading]=useState(false);async function submit(e:React.FormEvent){e.preventDefault();setLoading(true);try{const amount=parseRupiah(value);const response=await fetch("/api/deposits",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({amount:amount.toString()})});const body=await response.json();if(!response.ok||!body.success)throw new Error(body.error?.message??"Gagal membuat deposit");window.location.href=body.data.whatsappUrl}catch(e){toast.error(e instanceof Error?e.message:"Gagal")}finally{setLoading(false)}}return <form onSubmit={submit} className="space-y-5"><div><Label htmlFor="amount">Nominal deposit</Label><Input id="amount" inputMode="numeric" value={value} onChange={e=>setValue(e.target.value.replace(/\D/g,""))}/><p className="mt-2 text-sm text-[var(--muted-foreground)]">Saldo diterima: {formatRupiah(parseRupiah(value))}</p></div><div className="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900 dark:bg-amber-950 dark:text-amber-100"><p className="font-bold">Deposit manual via super admin</p><p className="mt-1">Setelah menekan tombol, Anda diarahkan ke WhatsApp <strong>+62 821-4121-8134</strong>. Saldo hanya ditambahkan setelah admin memverifikasi pembayaran.</p></div><Button className="w-full" disabled={loading}>{loading?<><LoaderCircle className="size-4 animate-spin"/>Membuat permintaan...</>:<><MessageCircle className="size-4"/>Lanjut ke WhatsApp Admin</>}</Button></form>}

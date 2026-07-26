@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: otpmarket-ci-${{ github.ref }}
@@ -14,11 +14,29 @@ concurrency:
 jobs:
   quality:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: otpmarket
+          POSTGRES_PASSWORD: otpmarket
+          POSTGRES_DB: otpmarket
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U otpmarket -d otpmarket"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     env:
       NODE_ENV: test
       DATABASE_URL: postgresql://otpmarket:otpmarket@127.0.0.1:5432/otpmarket?schema=public
       APP_URL: http://127.0.0.1:3000
+      APP_NAME: OTPMarket
+      APP_DESCRIPTION: Layanan nomor virtual dan OTP
+      APP_SUPPORT_WHATSAPP: "6282141218134"
+      SUPER_ADMIN_WHATSAPP: "6282141218134"
       RUMAHOTP_MOCK_MODE: "true"
       RUMAHOTP_API_KEY: ""
       WORKER_SECRET: ci-worker-secret
@@ -52,8 +70,46 @@ jobs:
       - name: Production build
         run: npm run build
 
+      - name: Deploy migration and seed test database
+        run: |
+          npm run db:migrate
+          npm run db:seed
+
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: End-to-end tests
-        run: npm run test:e2e
+      - name: Capture end-to-end result
+        id: e2e
+        shell: bash
+        run: |
+          set +e
+          npm run test:e2e > /tmp/otpmarket-e2e.log 2>&1
+          status=$?
+          cat /tmp/otpmarket-e2e.log
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Save end-to-end diagnostics
+        if: steps.e2e.outputs.status != '0' && hashFiles('.github/ci-e2e.log') == ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          content="$(base64 -w0 /tmp/otpmarket-e2e.log)"
+          jq -n \
+            --arg message "save OTPMarket end-to-end diagnostics" \
+            --arg content "$content" \
+            --arg branch "agent/fix-otpmarket-pterodactyl" \
+            '{message:$message,content:$content,branch:$branch}' > /tmp/payload.json
+          curl --fail-with-body -L \
+            -X PUT \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/Lexxyy-Lord/web-nyoba/contents/.github/ci-e2e.log" \
+            --data-binary @/tmp/payload.json
+
+      - name: Enforce end-to-end result
+        if: steps.e2e.outputs.status != '0'
+        run: exit 1

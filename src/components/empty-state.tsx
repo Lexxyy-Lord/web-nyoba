@@ -1,0 +1,2 @@
+import { Inbox } from "lucide-react";
+export function EmptyState({ title = "Belum ada data", description = "Data akan tampil di sini setelah tersedia." }: { title?: string; description?: string }) { return <div className="rounded-2xl border border-dashed p-10 text-center"><Inbox className="mx-auto size-8 text-[var(--muted-foreground)]"/><h3 className="mt-3 font-bold">{title}</h3><p className="mt-1 text-sm text-[var(--muted-foreground)]">{description}</p></div>; }
