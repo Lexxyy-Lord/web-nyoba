@@ -26,7 +26,7 @@ const baseRule = {
   countryId: null,
   providerId: null,
   percentage: { toString: () => "0" },
-} as never;
+};
 
 describe("pricing", () => {
   beforeEach(() => vi.clearAllMocks());
