@@ -14,11 +14,29 @@ concurrency:
 jobs:
   quality:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: otpmarket
+          POSTGRES_PASSWORD: otpmarket
+          POSTGRES_DB: otpmarket
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U otpmarket -d otpmarket"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     env:
       NODE_ENV: test
       DATABASE_URL: postgresql://otpmarket:otpmarket@127.0.0.1:5432/otpmarket?schema=public
       APP_URL: http://127.0.0.1:3000
+      APP_NAME: OTPMarket
+      APP_DESCRIPTION: Layanan nomor virtual dan OTP
+      APP_SUPPORT_WHATSAPP: "6282141218134"
+      SUPER_ADMIN_WHATSAPP: "6282141218134"
       RUMAHOTP_MOCK_MODE: "true"
       RUMAHOTP_API_KEY: ""
       WORKER_SECRET: ci-worker-secret
@@ -84,6 +102,11 @@ jobs:
 
       - name: Production build
         run: npm run build
+
+      - name: Prepare test database
+        run: |
+          npx prisma db push --skip-generate
+          npm run db:seed
 
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
