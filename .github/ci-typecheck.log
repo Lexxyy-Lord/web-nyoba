@@ -1,8 +1,0 @@
-
-> otpmarket@1.0.0 typecheck
-> tsc --noEmit
-
-tests/unit/pricing.test.ts(53,9): error TS2698: Spread types may only be created from object types.
-tests/unit/pricing.test.ts(60,9): error TS2698: Spread types may only be created from object types.
-tests/unit/pricing.test.ts(68,9): error TS2698: Spread types may only be created from object types.
-tests/unit/pricing.test.ts(76,9): error TS2698: Spread types may only be created from object types.
