@@ -1,0 +1,81 @@
+
+> otpmarket@1.0.0 test:e2e
+> playwright test
+
+
+Running 8 tests using 1 worker
+
+[1/8] [chromium] › tests/e2e/auth-and-purchase.spec.ts:19:5 › register, admin credit, mock purchase, and OTP order flow
+[2/8] (retries) [chromium] › tests/e2e/auth-and-purchase.spec.ts:19:5 › register, admin credit, mock purchase, and OTP order flow (retry #1)
+  1) [chromium] › tests/e2e/auth-and-purchase.spec.ts:19:5 › register, admin credit, mock purchase, and OTP order flow 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.fill: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Nama lengkap')
+
+
+      25 |
+      26 |   await page.goto("/register");
+    > 27 |   await page.getByLabel("Nama lengkap").fill("E2E User");
+         |                                         ^
+      28 |   await page.getByLabel("Username").fill(username);
+      29 |   await page.getByLabel("Email").fill(email);
+      30 |   await page.getByLabel("Password", { exact: true }).fill(password);
+        at /home/runner/work/web-nyoba/web-nyoba/tests/e2e/auth-and-purchase.spec.ts:27:41
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium/error-context.md
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.fill: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Nama lengkap')
+
+
+      25 |
+      26 |   await page.goto("/register");
+    > 27 |   await page.getByLabel("Nama lengkap").fill("E2E User");
+         |                                         ^
+      28 |   await page.getByLabel("Username").fill(username);
+      29 |   await page.getByLabel("Email").fill(email);
+      30 |   await page.getByLabel("Password", { exact: true }).fill(password);
+        at /home/runner/work/web-nyoba/web-nyoba/tests/e2e/auth-and-purchase.spec.ts:27:41
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/error-context.md
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[3/8] [chromium] › tests/e2e/responsive.spec.ts:4:7 › / has no horizontal overflow
+[4/8] [chromium] › tests/e2e/responsive.spec.ts:4:7 › /login has no horizontal overflow
+[5/8] [chromium] › tests/e2e/responsive.spec.ts:4:7 › /register has no horizontal overflow
+[6/8] [mobile] › tests/e2e/auth-and-purchase.spec.ts:19:5 › register, admin credit, mock purchase, and OTP order flow
+[7/8] [mobile] › tests/e2e/responsive.spec.ts:4:7 › / has no horizontal overflow
+[8/8] [mobile] › tests/e2e/responsive.spec.ts:4:7 › /login has no horizontal overflow
+[9/8] [mobile] › tests/e2e/responsive.spec.ts:4:7 › /register has no horizontal overflow
+  1 failed
+    [chromium] › tests/e2e/auth-and-purchase.spec.ts:19:5 › register, admin credit, mock purchase, and OTP order flow 
+  1 skipped
+  6 passed (2.1m)
