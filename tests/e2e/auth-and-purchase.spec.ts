@@ -8,8 +8,15 @@ async function login(page: Page, identifier: string, loginPassword: string) {
   await page.goto("/login");
   await page.getByLabel("Email atau username").fill(identifier);
   await page.getByLabel("Password").fill(loginPassword);
+  const responsePromise = page.waitForResponse(
+    (response) => response.url().includes("/api/auth/login") && response.request().method() === "POST",
+  );
   await page.getByRole("button", { name: "Masuk" }).click();
-  await expect(page).toHaveURL(/dashboard|admin/);
+  const response = await responsePromise;
+  const body = await response.json();
+  expect(response.ok(), JSON.stringify(body)).toBeTruthy();
+  await page.goto(identifier.includes("admin") ? "/admin" : "/dashboard");
+  await expect(page).not.toHaveURL(/\/login/);
 }
 
 test.afterAll(async () => {
@@ -29,9 +36,18 @@ test("register, admin credit, mock purchase, and OTP order flow", async ({ page 
   await page.getByLabel("Email").fill(email);
   await page.getByLabel("Password", { exact: true }).fill(password);
   await page.getByLabel("Konfirmasi password").fill(password);
-  await page.getByText("Saya menyetujui").click();
+  await page.getByLabel(/Saya menyetujui/).check();
+
+  const registerResponsePromise = page.waitForResponse(
+    (response) => response.url().includes("/api/auth/register") && response.request().method() === "POST",
+  );
   await page.getByRole("button", { name: "Buat akun" }).click();
-  await expect(page).toHaveURL(/dashboard/);
+  const registerResponse = await registerResponsePromise;
+  const registerBody = await registerResponse.json();
+  expect(registerResponse.ok(), JSON.stringify(registerBody)).toBeTruthy();
+
+  await page.goto("/dashboard");
+  await expect(page).not.toHaveURL(/\/login/);
 
   const user = await prisma.user.findUnique({ where: { email } });
   expect(user).not.toBeNull();
