@@ -1,0 +1,385 @@
+generator client { provider = "prisma-client-js" }
+datasource db { provider = "postgresql"; url = env("DATABASE_URL") }
+
+enum UserStatus { ACTIVE INACTIVE BLOCKED SUSPENDED }
+enum LedgerType { DEPOSIT ADMIN_CREDIT ADMIN_DEBIT OTP_PURCHASE OTP_REFUND CORRECTION BONUS CASHBACK }
+enum OtpOrderStatus { PENDING ORDERING WAITING_OTP OTP_RECEIVED COMPLETED CANCEL_REQUESTED CANCELED EXPIRED FAILED REFUNDED PARTIALLY_REFUNDED }
+enum DepositStatus { REQUESTED WAITING_PAYMENT MANUAL_REVIEW SUCCESS CANCELED EXPIRED REJECTED }
+enum PricingScope { GLOBAL SERVICE COUNTRY PROVIDER }
+enum ProfitType { FIXED PERCENTAGE COMBINED }
+enum NotificationType { INFO SUCCESS WARNING ERROR SECURITY }
+
+model Role {
+  id String @id @default(cuid())
+  key String @unique
+  name String
+  users User[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  id String @id @default(cuid())
+  name String
+  username String @unique
+  email String @unique
+  passwordHash String
+  whatsapp String?
+  avatarUrl String?
+  status UserStatus @default(ACTIVE)
+  failedLoginAttempts Int @default(0)
+  lockedUntil DateTime?
+  termsAcceptedAt DateTime
+  roleId String
+  role Role @relation(fields: [roleId], references: [id])
+  profile UserProfile?
+  balance UserBalance?
+  sessions Session[]
+  ledgers BalanceLedger[]
+  otpOrders OtpOrder[]
+  deposits Deposit[]
+  notifications Notification[]
+  loginHistory LoginHistory[]
+  resetTokens PasswordResetToken[]
+  adminActions AdminActivityLog[] @relation("AdminActor")
+  apiLogs ApiRequestLog[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([roleId])
+  @@index([status])
+}
+
+model Session {
+  id String @id @default(cuid())
+  sessionToken String @unique
+  userId String
+  expires DateTime
+  ipAddress String?
+  userAgent String?
+  lastSeenAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId])
+  @@index([expires])
+}
+
+model UserProfile {
+  id String @id @default(cuid())
+  userId String @unique
+  theme String @default("system")
+  locale String @default("id-ID")
+  timezone String @default("Asia/Jakarta")
+  emailNotifications Boolean @default(true)
+  securityNotifications Boolean @default(true)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model UserBalance {
+  id String @id @default(cuid())
+  userId String @unique
+  balance BigInt @default(0)
+  version Int @default(0)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  updatedAt DateTime @updatedAt
+}
+
+model BalanceLedger {
+  id String @id @default(cuid())
+  transactionId String @unique
+  userId String
+  type LedgerType
+  debit BigInt @default(0)
+  credit BigInt @default(0)
+  balanceBefore BigInt
+  balanceAfter BigInt
+  orderId String?
+  depositId String?
+  description String
+  adminId String?
+  ipAddress String?
+  userAgent String?
+  metadata Json?
+  user User @relation(fields: [userId], references: [id], onDelete: Restrict)
+  order OtpOrder? @relation(fields: [orderId], references: [id])
+  deposit Deposit? @relation(fields: [depositId], references: [id])
+  createdAt DateTime @default(now())
+  @@index([userId, createdAt])
+  @@index([orderId])
+  @@index([depositId])
+}
+
+model OtpService {
+  id String @id @default(cuid())
+  serviceCode Int @unique
+  name String
+  imageUrl String?
+  active Boolean @default(true)
+  syncedAt DateTime?
+  countries OtpCountry[]
+  orders OtpOrder[]
+  pricingRules PricingRule[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model OtpCountry {
+  id String @id @default(cuid())
+  serviceId String
+  numberId Int
+  name String
+  isoCode String
+  prefix String?
+  flagUrl String?
+  stockTotal Int @default(0)
+  active Boolean @default(true)
+  syncedAt DateTime?
+  service OtpService @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  providers OtpProvider[]
+  orders OtpOrder[]
+  pricingRules PricingRule[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@unique([serviceId, numberId])
+  @@index([isoCode])
+}
+
+model OtpProvider {
+  id String @id @default(cuid())
+  countryId String
+  providerExternalId String
+  serverId Int?
+  stock Int @default(0)
+  costPrice BigInt @default(0)
+  available Boolean @default(true)
+  syncedAt DateTime?
+  country OtpCountry @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  operators OtpOperator[]
+  orders OtpOrder[]
+  pricingRules PricingRule[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@unique([countryId, providerExternalId])
+}
+
+model OtpOperator {
+  id String @id @default(cuid())
+  providerId String
+  operatorExternalId Int
+  name String
+  imageUrl String?
+  active Boolean @default(true)
+  provider OtpProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  orders OtpOrder[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@unique([providerId, operatorExternalId])
+}
+
+model OtpOrder {
+  id String @id @default(cuid())
+  internalOrderNumber String @unique
+  providerOrderId String? @unique
+  userId String
+  serviceId String?
+  countryId String?
+  providerId String?
+  operatorId String?
+  serviceCode Int
+  serviceName String
+  countryName String
+  countryIso String?
+  operatorName String
+  providerExternalId String
+  numberId Int
+  operatorExternalId Int
+  phoneNumber String?
+  otpCode String?
+  otpMessage String?
+  costPrice BigInt
+  profitAmount BigInt
+  sellingPrice BigInt
+  balanceBefore BigInt
+  balanceAfter BigInt
+  status OtpOrderStatus @default(PENDING)
+  providerStatus String?
+  failureReason String?
+  idempotencyKey String
+  refundTransactionId String? @unique
+  refundedAt DateTime?
+  providerCreatedAt DateTime?
+  providerExpiredAt DateTime?
+  lastPolledAt DateTime?
+  pollAttempts Int @default(0)
+  user User @relation(fields: [userId], references: [id], onDelete: Restrict)
+  service OtpService? @relation(fields: [serviceId], references: [id])
+  country OtpCountry? @relation(fields: [countryId], references: [id])
+  provider OtpProvider? @relation(fields: [providerId], references: [id])
+  operator OtpOperator? @relation(fields: [operatorId], references: [id])
+  statusHistory OtpOrderStatusHistory[]
+  ledgers BalanceLedger[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@unique([userId, idempotencyKey])
+  @@index([userId, status, createdAt])
+  @@index([status, lastPolledAt])
+}
+
+model OtpOrderStatusHistory {
+  id String @id @default(cuid())
+  orderId String
+  fromStatus OtpOrderStatus?
+  toStatus OtpOrderStatus
+  providerStatus String?
+  reason String?
+  metadata Json?
+  order OtpOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  @@index([orderId, createdAt])
+}
+
+model Deposit {
+  id String @id @default(cuid())
+  internalDepositNumber String @unique
+  userId String
+  amountRequested BigInt
+  fee BigInt @default(0)
+  amountReceived BigInt
+  method String @default("WHATSAPP_ADMIN")
+  status DepositStatus @default(REQUESTED)
+  paymentReference String?
+  proofUrl String?
+  adminNote String?
+  approvedBy String?
+  approvedAt DateTime?
+  creditedTransactionId String? @unique
+  expiresAt DateTime?
+  user User @relation(fields: [userId], references: [id], onDelete: Restrict)
+  statusHistory DepositStatusHistory[]
+  ledgers BalanceLedger[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([userId, status, createdAt])
+}
+
+model DepositStatusHistory {
+  id String @id @default(cuid())
+  depositId String
+  fromStatus DepositStatus?
+  toStatus DepositStatus
+  reason String?
+  adminId String?
+  metadata Json?
+  deposit Deposit @relation(fields: [depositId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  @@index([depositId, createdAt])
+}
+
+model PricingRule {
+  id String @id @default(cuid())
+  name String
+  scope PricingScope
+  profitType ProfitType
+  fixedAmount BigInt @default(0)
+  percentage Decimal @default(0) @db.Decimal(7, 3)
+  minimumSelling BigInt?
+  maximumSelling BigInt?
+  roundingIncrement Int @default(100)
+  active Boolean @default(true)
+  priority Int @default(0)
+  validFrom DateTime?
+  validUntil DateTime?
+  serviceId String?
+  countryId String?
+  providerId String?
+  service OtpService? @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  country OtpCountry? @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  provider OtpProvider? @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  createdBy String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([scope, active, priority])
+}
+
+model AppSetting {
+  id String @id @default(cuid())
+  key String @unique
+  value Json
+  description String?
+  isPublic Boolean @default(false)
+  updatedBy String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Notification {
+  id String @id @default(cuid())
+  userId String?
+  title String
+  message String
+  type NotificationType @default(INFO)
+  readAt DateTime?
+  actionUrl String?
+  metadata Json?
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  @@index([userId, readAt, createdAt])
+}
+
+model AdminActivityLog {
+  id String @id @default(cuid())
+  adminId String
+  action String
+  entityType String
+  entityId String?
+  description String
+  ipAddress String?
+  userAgent String?
+  beforeData Json?
+  afterData Json?
+  admin User @relation("AdminActor", fields: [adminId], references: [id], onDelete: Restrict)
+  createdAt DateTime @default(now())
+  @@index([adminId, createdAt])
+}
+
+model ApiRequestLog {
+  id String @id @default(cuid())
+  userId String?
+  endpoint String
+  method String
+  statusCode Int?
+  responseTimeMs Int
+  success Boolean
+  errorCode String?
+  orderId String?
+  requestMeta Json?
+  responseMeta Json?
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  createdAt DateTime @default(now())
+  @@index([createdAt])
+  @@index([success, createdAt])
+}
+
+model LoginHistory {
+  id String @id @default(cuid())
+  userId String?
+  email String
+  success Boolean
+  reason String?
+  ipAddress String?
+  userAgent String?
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  createdAt DateTime @default(now())
+  @@index([email, createdAt])
+}
+
+model PasswordResetToken {
+  id String @id @default(cuid())
+  userId String
+  tokenHash String @unique
+  expiresAt DateTime
+  usedAt DateTime?
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  @@index([userId, expiresAt])
+}
