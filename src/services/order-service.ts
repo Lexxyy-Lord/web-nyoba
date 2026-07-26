@@ -1,4 +1,4 @@
-import { Prisma, type OtpOrderStatus } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { AppError } from "@/lib/http";
 import { mutateBalance } from "@/lib/balance";
