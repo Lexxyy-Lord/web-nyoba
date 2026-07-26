@@ -1,0 +1,221 @@
+== source parts ==
+part-00 10000 bytes
+part-01 10000 bytes
+part-02 10000 bytes
+part-03 10000 bytes
+part-04 10000 bytes
+part-05 10000 bytes
+part-06 10000 bytes
+part-07 10000 bytes
+part-08 10000 bytes
+part-09 8512 bytes
+== combined base64 ==
+98512 /tmp/otpmarket-source.tar.gz.b64
+6c451ba3becb5977d35c57abb1062086053cce15a91f79b393e3c845a37a1016  /tmp/otpmarket-source.tar.gz.b64
+== decode ==
+decode_status=0
+73882 /tmp/otpmarket-source.tar.gz
+/tmp/otpmarket-source.tar.gz: gzip compressed data, from Unix, original size modulo 2^32 532480
+6320372ffdb5cfadb8c9beaad02da642cca1e0fbf53d3846587add550a704d15  /tmp/otpmarket-source.tar.gz
+== tar validation ==
+drwxr-sr-x root/oai_shared   0 2026-07-26 13:22 ./
+-rw-r--r-- root/oai_shared 3875 2026-07-26 13:21 ./README.md
+-rw-r--r-- root/oai_shared  107 2026-07-26 13:03 ./.gitignore
+-rw-r--r-- root/oai_shared  568 2026-07-26 13:03 ./tsconfig.json
+-rw-r--r-- root/oai_shared  516 2026-07-26 13:03 ./playwright.config.ts
+-rw-r--r-- root/oai_shared  840 2026-07-26 13:21 ./DEPLOYMENT.md
+-rw-r--r-- root/oai_shared   81 2026-07-26 13:03 ./next-env.d.ts
+-rw-r--r-- root/oai_shared  601 2026-07-26 13:03 ./proxy.ts
+-rw-r--r-- root/oai_shared 1166 2026-07-26 13:21 ./API_INTEGRATION.md
+-rw-r--r-- root/oai_shared  465 2026-07-26 13:21 ./TESTING.md
+-rw-r--r-- root/oai_shared  398 2026-07-26 13:21 ./INSTALLATION.md
+-rw-r--r-- root/oai_shared   46 2026-07-26 13:03 ./.prettierignore
+-rw-r--r-- root/oai_shared  381 2026-07-26 13:21 ./CHANGELOG.md
+-rw-r--r-- root/oai_shared 2126 2026-07-26 13:03 ./package.json
+-rw-r--r-- root/oai_shared  650 2026-07-26 13:21 ./DATABASE.md
+-rw-r--r-- root/oai_shared 1365 2026-07-26 13:03 ./next.config.ts
+drwxr-sr-x root/oai_shared    0 2026-07-26 13:05 ./prisma/
+-rw-r--r-- root/oai_shared 2314 2026-07-26 13:05 ./prisma/seed.ts
+-rw-r--r-- root/oai_shared 15468 2026-07-26 13:05 ./prisma/schema.prisma
+-rw-r--r-- root/oai_shared   328 2026-07-26 13:03 ./eslint.config.mjs
+-rw-r--r-- root/oai_shared  1060 2026-07-26 13:21 ./.env.example
+-rw-r--r-- root/oai_shared    60 2026-07-26 13:03 ./postcss.config.mjs
+-rw-r--r-- root/oai_shared   952 2026-07-26 13:21 ./SECURITY.md
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:11 ./src/
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:15 ./src/components/
+-rw-r--r-- root/oai_shared  7618 2026-07-26 13:14 ./src/components/buy-number-flow.tsx
+-rw-r--r-- root/oai_shared   328 2026-07-26 13:10 ./src/components/loading-skeleton.tsx
+-rw-r--r-- root/oai_shared   686 2026-07-26 13:10 ./src/components/stat-card.tsx
+-rw-r--r-- root/oai_shared  3402 2026-07-26 13:12 ./src/components/auth-form.tsx
+-rw-r--r-- root/oai_shared   411 2026-07-26 13:11 ./src/components/section-card.tsx
+-rw-r--r-- root/oai_shared  2665 2026-07-26 13:15 ./src/components/order-detail-actions.tsx
+-rw-r--r-- root/oai_shared  1889 2026-07-26 13:14 ./src/components/deposit-form.tsx
+-rw-r--r-- root/oai_shared   488 2026-07-26 13:11 ./src/components/page-header.tsx
+-rw-r--r-- root/oai_shared  2733 2026-07-26 13:14 ./src/components/admin-pricing-form.tsx
+-rw-r--r-- root/oai_shared  1312 2026-07-26 13:10 ./src/components/status-badge.tsx
+-rw-r--r-- root/oai_shared  3352 2026-07-26 13:11 ./src/components/app-shell.tsx
+-rw-r--r-- root/oai_shared   468 2026-07-26 13:10 ./src/components/empty-state.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:10 ./src/components/ui/
+-rw-r--r-- root/oai_shared   922 2026-07-26 13:10 ./src/components/ui/card.tsx
+-rw-r--r-- root/oai_shared  1264 2026-07-26 13:10 ./src/components/ui/button.tsx
+-rw-r--r-- root/oai_shared   318 2026-07-26 13:10 ./src/components/ui/label.tsx
+-rw-r--r-- root/oai_shared   292 2026-07-26 13:10 ./src/components/ui/badge.tsx
+-rw-r--r-- root/oai_shared   323 2026-07-26 13:10 ./src/components/ui/input.tsx
+-rw-r--r-- root/oai_shared   457 2026-07-26 13:11 ./src/components/theme-toggle.tsx
+-rw-r--r-- root/oai_shared   209 2026-07-26 13:10 ./src/components/theme-provider.tsx
+-rw-r--r-- root/oai_shared   686 2026-07-26 13:11 ./src/components/data-table.tsx
+-rw-r--r-- root/oai_shared   345 2026-07-26 13:10 ./src/components/error-state.tsx
+-rw-r--r-- root/oai_shared  1597 2026-07-26 13:14 ./src/components/admin-balance-form.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:09 ./src/services/
+-rw-r--r-- root/oai_shared  9776 2026-07-26 13:09 ./src/services/order-service.ts
+-rw-r--r-- root/oai_shared  2986 2026-07-26 13:09 ./src/services/deposit-service.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:08 ./src/lib/
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:08 ./src/lib/rumahotp/
+-rw-r--r-- root/oai_shared   173 2026-07-26 13:08 ./src/lib/rumahotp/errors.ts
+-rw-r--r-- root/oai_shared   766 2026-07-26 13:08 ./src/lib/rumahotp/status-mapper.ts
+-rw-r--r-- root/oai_shared  2664 2026-07-26 13:08 ./src/lib/rumahotp/mock.ts
+-rw-r--r-- root/oai_shared  1179 2026-07-26 13:08 ./src/lib/rumahotp/types.ts
+-rw-r--r-- root/oai_shared   812 2026-07-26 13:08 ./src/lib/rumahotp/rate-limiter.ts
+-rw-r--r-- root/oai_shared  1878 2026-07-26 13:08 ./src/lib/rumahotp/services.ts
+-rw-r--r-- root/oai_shared  2917 2026-07-26 13:08 ./src/lib/rumahotp/client.ts
+-rw-r--r-- root/oai_shared   749 2026-07-26 13:06 ./src/lib/rate-limit.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:06 ./src/lib/auth/
+-rw-r--r-- root/oai_shared   439 2026-07-26 13:06 ./src/lib/auth/password.ts
+-rw-r--r-- root/oai_shared   908 2026-07-26 13:06 ./src/lib/auth/email.ts
+-rw-r--r-- root/oai_shared   683 2026-07-26 13:06 ./src/lib/auth/captcha.ts
+-rw-r--r-- root/oai_shared  1984 2026-07-26 13:06 ./src/lib/auth/session.ts
+-rw-r--r-- root/oai_shared   884 2026-07-26 13:06 ./src/lib/auth/guards.ts
+-rw-r--r-- root/oai_shared  1881 2026-07-26 13:06 ./src/lib/env.ts
+-rw-r--r-- root/oai_shared  2482 2026-07-26 13:06 ./src/lib/validation.ts
+-rw-r--r-- root/oai_shared   593 2026-07-26 13:06 ./src/lib/money.ts
+-rw-r--r-- root/oai_shared  2391 2026-07-26 13:06 ./src/lib/balance.ts
+-rw-r--r-- root/oai_shared  1602 2026-07-26 13:22 ./src/lib/http.ts
+-rw-r--r-- root/oai_shared  2634 2026-07-26 13:08 ./src/lib/pricing.ts
+-rw-r--r-- root/oai_shared   236 2026-07-26 13:06 ./src/lib/request-hash.ts
+-rw-r--r-- root/oai_shared   458 2026-07-26 13:06 ./src/lib/audit.ts
+-rw-r--r-- root/oai_shared   572 2026-07-26 13:06 ./src/lib/utils.ts
+-rw-r--r-- root/oai_shared   352 2026-07-26 13:06 ./src/lib/db.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:16 ./src/app/privacy/
+-rw-r--r-- root/oai_shared   472 2026-07-26 13:16 ./src/app/privacy/page.tsx
+-rw-r--r-- root/oai_shared  1333 2026-07-26 13:10 ./src/app/globals.css
+-rw-r--r-- root/oai_shared  9213 2026-07-26 13:12 ./src/app/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:15 ./src/app/(dashboard)/
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:16 ./src/app/(dashboard)/dashboard/
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:15 ./src/app/(dashboard)/dashboard/deposit/
+-rw-r--r-- root/oai_shared   912 2026-07-26 13:15 ./src/app/(dashboard)/dashboard/deposit/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:16 ./src/app/(dashboard)/dashboard/profile/
+-rw-r--r-- root/oai_shared  1367 2026-07-26 13:16 ./src/app/(dashboard)/dashboard/profile/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:15 ./src/app/(dashboard)/dashboard/orders/
+-rw-r--r-- root/oai_shared  1077 2026-07-26 13:15 ./src/app/(dashboard)/dashboard/orders/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:15 ./src/app/(dashboard)/dashboard/orders/[id]/
+-rw-r--r-- root/oai_shared  1588 2026-07-26 13:15 ./src/app/(dashboard)/dashboard/orders/[id]/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:15 ./src/app/(dashboard)/dashboard/buy-number/
+-rw-r--r-- root/oai_shared   315 2026-07-26 13:15 ./src/app/(dashboard)/dashboard/buy-number/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:15 ./src/app/(dashboard)/dashboard/balance-history/
+-rw-r--r-- root/oai_shared   876 2026-07-26 13:15 ./src/app/(dashboard)/dashboard/balance-history/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:15 ./src/app/(dashboard)/dashboard/order-history/
+-rw-r--r-- root/oai_shared  1036 2026-07-26 13:15 ./src/app/(dashboard)/dashboard/order-history/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:16 ./src/app/(dashboard)/dashboard/help/
+-rw-r--r-- root/oai_shared  1140 2026-07-26 13:16 ./src/app/(dashboard)/dashboard/help/page.tsx
+-rw-r--r-- root/oai_shared  3179 2026-07-26 13:15 ./src/app/(dashboard)/dashboard/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:16 ./src/app/(dashboard)/dashboard/security/
+-rw-r--r-- root/oai_shared  1218 2026-07-26 13:16 ./src/app/(dashboard)/dashboard/security/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:16 ./src/app/(dashboard)/dashboard/notifications/
+-rw-r--r-- root/oai_shared   995 2026-07-26 13:16 ./src/app/(dashboard)/dashboard/notifications/page.tsx
+-rw-r--r-- root/oai_shared   444 2026-07-26 13:15 ./src/app/(dashboard)/dashboard/layout.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:17 ./src/app/(admin)/
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/(admin)/admin/
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/(admin)/admin/profile/
+-rw-r--r-- root/oai_shared   862 2026-07-26 13:18 ./src/app/(admin)/admin/profile/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:17 ./src/app/(admin)/admin/pricing/
+-rw-r--r-- root/oai_shared   990 2026-07-26 13:17 ./src/app/(admin)/admin/pricing/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:17 ./src/app/(admin)/admin/balances/
+-rw-r--r-- root/oai_shared   476 2026-07-26 13:17 ./src/app/(admin)/admin/balances/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:17 ./src/app/(admin)/admin/orders/
+-rw-r--r-- root/oai_shared   839 2026-07-26 13:17 ./src/app/(admin)/admin/orders/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:17 ./src/app/(admin)/admin/deposits/
+-rw-r--r-- root/oai_shared   809 2026-07-26 13:17 ./src/app/(admin)/admin/deposits/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/(admin)/admin/services/
+-rw-r--r-- root/oai_shared   669 2026-07-26 13:18 ./src/app/(admin)/admin/services/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/(admin)/admin/settings/
+-rw-r--r-- root/oai_shared  1301 2026-07-26 13:18 ./src/app/(admin)/admin/settings/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/(admin)/admin/reports/
+-rw-r--r-- root/oai_shared  1294 2026-07-26 13:18 ./src/app/(admin)/admin/reports/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/(admin)/admin/api-logs/
+-rw-r--r-- root/oai_shared   659 2026-07-26 13:18 ./src/app/(admin)/admin/api-logs/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/(admin)/admin/activity-logs/
+-rw-r--r-- root/oai_shared   660 2026-07-26 13:18 ./src/app/(admin)/admin/activity-logs/page.tsx
+-rw-r--r-- root/oai_shared  2365 2026-07-26 13:17 ./src/app/(admin)/admin/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/(admin)/admin/security/
+-rw-r--r-- root/oai_shared   951 2026-07-26 13:18 ./src/app/(admin)/admin/security/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:17 ./src/app/(admin)/admin/ledger/
+-rw-r--r-- root/oai_shared   735 2026-07-26 13:17 ./src/app/(admin)/admin/ledger/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/(admin)/admin/notifications/
+-rw-r--r-- root/oai_shared   608 2026-07-26 13:18 ./src/app/(admin)/admin/notifications/page.tsx
+-rw-r--r-- root/oai_shared   412 2026-07-26 13:17 ./src/app/(admin)/admin/layout.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/(admin)/admin/providers/
+-rw-r--r-- root/oai_shared   760 2026-07-26 13:18 ./src/app/(admin)/admin/providers/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:17 ./src/app/(admin)/admin/users/
+-rw-r--r-- root/oai_shared   710 2026-07-26 13:17 ./src/app/(admin)/admin/users/page.tsx
+-rw-r--r-- root/oai_shared   791 2026-07-26 13:10 ./src/app/layout.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:16 ./src/app/terms/
+-rw-r--r-- root/oai_shared   643 2026-07-26 13:16 ./src/app/terms/page.tsx
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:20 ./src/app/api/
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:19 ./src/app/api/profile/
+-rw-r--r-- root/oai_shared   769 2026-07-26 13:19 ./src/app/api/profile/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/api/orders/
+-rw-r--r-- root/oai_shared   699 2026-07-26 13:18 ./src/app/api/orders/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/api/orders/[id]/
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/api/orders/[id]/cancel/
+-rw-r--r-- root/oai_shared   430 2026-07-26 13:18 ./src/app/api/orders/[id]/cancel/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/api/orders/[id]/resend/
+-rw-r--r-- root/oai_shared   430 2026-07-26 13:18 ./src/app/api/orders/[id]/resend/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/api/orders/[id]/done/
+-rw-r--r-- root/oai_shared   428 2026-07-26 13:18 ./src/app/api/orders/[id]/done/route.ts
+-rw-r--r-- root/oai_shared   468 2026-07-26 13:18 ./src/app/api/orders/[id]/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:19 ./src/app/api/deposits/
+-rw-r--r-- root/oai_shared   467 2026-07-26 13:19 ./src/app/api/deposits/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/api/price-preview/
+-rw-r--r-- root/oai_shared   605 2026-07-26 13:18 ./src/app/api/price-preview/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/api/countries/
+-rw-r--r-- root/oai_shared   426 2026-07-26 13:18 ./src/app/api/countries/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:20 ./src/app/api/internal/
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:20 ./src/app/api/internal/poll-orders/
+-rw-r--r-- root/oai_shared   852 2026-07-26 13:20 ./src/app/api/internal/poll-orders/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:20 ./src/app/api/auth/
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/api/auth/logout/
+-rw-r--r-- root/oai_shared   288 2026-07-26 13:18 ./src/app/api/auth/logout/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/api/auth/login/
+-rw-r--r-- root/oai_shared  1451 2026-07-26 13:18 ./src/app/api/auth/login/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:20 ./src/app/api/auth/forgot-password/
+-rw-r--r-- root/oai_shared  1056 2026-07-26 13:20 ./src/app/api/auth/forgot-password/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/api/auth/register/
+-rw-r--r-- root/oai_shared  1437 2026-07-26 13:18 ./src/app/api/auth/register/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:20 ./src/app/api/auth/reset-password/
+-rw-r--r-- root/oai_shared  1070 2026-07-26 13:20 ./src/app/api/auth/reset-password/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/api/services/
+-rw-r--r-- root/oai_shared   245 2026-07-26 13:18 ./src/app/api/services/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:19 ./src/app/api/admin/
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:19 ./src/app/api/admin/deposits/
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:19 ./src/app/api/admin/deposits/[id]/
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:19 ./src/app/api/admin/deposits/[id]/approve/
+-rw-r--r-- root/oai_shared   558 2026-07-26 13:19 ./src/app/api/admin/deposits/[id]/approve/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:19 ./src/app/api/admin/pricing-rules/
+-rw-r--r-- root/oai_shared   821 2026-07-26 13:19 ./src/app/api/admin/pricing-rules/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:19 ./src/app/api/admin/settings/
+-rw-r--r-- root/oai_shared   727 2026-07-26 13:19 ./src/app/api/admin/settings/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:19 ./src/app/api/admin/balance-adjustments/
+-rw-r--r-- root/oai_shared   952 2026-07-26 13:19 ./src/app/api/admin/balance-adjustments/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:19 ./src/app/api/admin/reports/
+-rw-r--r-- root/oai_shared   581 2026-07-26 13:19 ./src/app/api/admin/reports/route.ts
+drwxr-sr-x root/oai_shared     0 2026-07-26 13:18 ./src/app/api/operators/
+-rw-r--r-- root/oai_shared   466 2026-07-26 13:18 ./src/app/api/operators/route.ts
+tar: Skipping to next header
+
+gzip: stdin: invalid compressed data--crc error
+
+gzip: stdin: invalid compressed data--length error
+tar: Child returned status 1
+tar: Error is not recoverable: exiting now
+tar_status=2
