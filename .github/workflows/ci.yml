@@ -1,0 +1,59 @@
+name: OTPMarket CI
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: otpmarket-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      NODE_ENV: test
+      DATABASE_URL: postgresql://otpmarket:otpmarket@127.0.0.1:5432/otpmarket?schema=public
+      APP_URL: http://127.0.0.1:3000
+      RUMAHOTP_MOCK_MODE: "true"
+      RUMAHOTP_API_KEY: ""
+      WORKER_SECRET: ci-worker-secret
+      SEED_ADMIN_EMAIL: admin@example.com
+      SEED_ADMIN_USERNAME: superadmin
+      SEED_ADMIN_PASSWORD: ChangeMe123!
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Generate Prisma client
+        run: npm run db:generate
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Unit and integration tests
+        run: npm run test
+
+      - name: Production build
+        run: npm run build
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: End-to-end tests
+        run: npm run test:e2e
