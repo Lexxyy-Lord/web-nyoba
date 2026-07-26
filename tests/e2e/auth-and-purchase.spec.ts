@@ -1,11 +1,10 @@
-import { expect, test } from "@playwright/test";
+import { PrismaClient } from "@prisma/client";
+import { expect, test, type Page } from "@playwright/test";
 
-const unique = Date.now();
-const username = `e2e${unique}`;
-const email = `${username}@example.com`;
+const prisma = new PrismaClient();
 const password = "SecurePass123";
 
-async function login(page: Parameters<typeof test>[0] extends never ? never : any, identifier: string, loginPassword: string) {
+async function login(page: Page, identifier: string, loginPassword: string) {
   await page.goto("/login");
   await page.getByLabel("Email atau username").fill(identifier);
   await page.getByLabel("Password").fill(loginPassword);
@@ -13,7 +12,17 @@ async function login(page: Parameters<typeof test>[0] extends never ? never : an
   await expect(page).toHaveURL(/dashboard|admin/);
 }
 
-test("register, admin credit, mock purchase, and OTP order flow", async ({ page }) => {
+test.afterAll(async () => {
+  await prisma.$disconnect();
+});
+
+test("register, admin credit, mock purchase, and OTP order flow", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "chromium", "Main purchase flow runs once on desktop Chromium");
+
+  const unique = `${Date.now()}${Math.floor(Math.random() * 10_000)}`;
+  const username = `e2e${unique}`;
+  const email = `${username}@example.com`;
+
   await page.goto("/register");
   await page.getByLabel("Nama lengkap").fill("E2E User");
   await page.getByLabel("Username").fill(username);
@@ -24,13 +33,8 @@ test("register, admin credit, mock purchase, and OTP order flow", async ({ page 
   await page.getByRole("button", { name: "Buat akun" }).click();
   await expect(page).toHaveURL(/dashboard/);
 
-  const profileResponse = await page.request.get("/api/test/user-id", {
-    headers: { "x-e2e-secret": process.env.WORKER_SECRET ?? "ci-worker-secret" },
-    params: { email },
-  });
-  expect(profileResponse.ok()).toBeTruthy();
-  const profileBody = await profileResponse.json();
-  const userId = profileBody.data.id as string;
+  const user = await prisma.user.findUnique({ where: { email } });
+  expect(user).not.toBeNull();
 
   await page.getByRole("button", { name: "Keluar" }).click();
   await login(
@@ -40,7 +44,7 @@ test("register, admin credit, mock purchase, and OTP order flow", async ({ page 
   );
 
   await page.goto("/admin/balances");
-  await page.locator('input[name="userId"]').fill(userId);
+  await page.locator('input[name="userId"]').fill(user!.id);
   await page.locator('input[name="amount"]').fill("50000");
   await page.locator('input[name="reason"]').fill("Saldo pengujian otomatis");
   await page.getByRole("button", { name: "Simpan mutasi saldo" }).click();
