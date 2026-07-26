@@ -1,0 +1,82 @@
+name: Generate initial Prisma migration
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: otpmarket-initial-migration
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    if: github.event_name != 'pull_request' || github.head_ref == 'agent/fix-otpmarket-pterodactyl'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/fix-otpmarket-pterodactyl
+
+      - name: Detect migration
+        id: migration
+        shell: bash
+        run: |
+          if find prisma/migrations -mindepth 2 -maxdepth 2 -name migration.sql -print -quit 2>/dev/null | grep -q .; then
+            echo "needed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install dependencies
+        if: steps.migration.outputs.needed == 'true'
+        run: npm install --no-audit --no-fund
+
+      - name: Generate initial SQL
+        if: steps.migration.outputs.needed == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/otpmarket-migration
+          npx prisma migrate diff \
+            --from-empty \
+            --to-schema-datamodel prisma/schema.prisma \
+            --script > /tmp/otpmarket-migration/migration.sql
+          test -s /tmp/otpmarket-migration/migration.sql
+          printf 'provider = "postgresql"\n' > /tmp/otpmarket-migration/migration_lock.toml
+
+      - name: Commit migration through GitHub API
+        if: steps.migration.outputs.needed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          branch="agent/fix-otpmarket-pterodactyl"
+          directory="prisma/migrations/20260726162000_init"
+
+          migration_content="$(base64 -w0 /tmp/otpmarket-migration/migration.sql)"
+          jq -n --arg message "add initial Prisma migration" --arg content "$migration_content" --arg branch "$branch" \
+            '{message:$message,content:$content,branch:$branch}' > /tmp/migration-payload.json
+          curl --fail-with-body -L -X PUT \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/Lexxyy-Lord/web-nyoba/contents/$directory/migration.sql" \
+            --data-binary @/tmp/migration-payload.json
+
+          lock_content="$(base64 -w0 /tmp/otpmarket-migration/migration_lock.toml)"
+          jq -n --arg message "add Prisma migration lock" --arg content "$lock_content" --arg branch "$branch" \
+            '{message:$message,content:$content,branch:$branch}' > /tmp/lock-payload.json
+          curl --fail-with-body -L -X PUT \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/Lexxyy-Lord/web-nyoba/contents/prisma/migrations/migration_lock.toml" \
+            --data-binary @/tmp/lock-payload.json
