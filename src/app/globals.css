@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --border: #e2e8f0;
+  --primary: #4f46e5;
+  --primary-foreground: #ffffff;
+  --success: #059669;
+  --warning: #d97706;
+  --danger: #dc2626;
+}
+.dark {
+  --background: #070b14;
+  --foreground: #e5e7eb;
+  --card: #0f172a;
+  --card-foreground: #f8fafc;
+  --muted: #182235;
+  --muted-foreground: #94a3b8;
+  --border: #263449;
+  --primary: #818cf8;
+  --primary-foreground: #111827;
+}
+* { border-color: var(--border); }
+html { scroll-behavior: smooth; }
+body { background: var(--background); color: var(--foreground); font-family: Arial, Helvetica, sans-serif; }
+button, a, input, select, textarea { outline-offset: 3px; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--primary); }
+.surface { background: color-mix(in srgb, var(--card) 94%, transparent); border: 1px solid var(--border); box-shadow: 0 14px 45px rgba(15,23,42,.06); }
+.grid-bg { background-image: linear-gradient(to right, rgba(99,102,241,.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(99,102,241,.08) 1px, transparent 1px); background-size: 32px 32px; }
+.text-balance { text-wrap: balance; }

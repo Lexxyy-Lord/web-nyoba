@@ -1,0 +1,4 @@
+import { DepositForm } from "@/components/deposit-form";
+import { PageHeader } from "@/components/page-header";
+import { SectionCard } from "@/components/section-card";
+export default function DepositPage(){return <><PageHeader title="Deposit Saldo" description="Semua deposit diarahkan ke WhatsApp super admin dan diproses secara manual."/><div className="grid gap-6 lg:grid-cols-[1fr_.7fr]"><SectionCard title="Buat permintaan deposit" description="Minimum Rp10.000, maksimum 3 permintaan pending."><DepositForm/></SectionCard><SectionCard title="Alur verifikasi"><ol className="space-y-4 text-sm"><li><b>1.</b> Tentukan nominal deposit.</li><li><b>2.</b> Sistem membuat ID deposit unik.</li><li><b>3.</b> Anda diarahkan ke WhatsApp super admin.</li><li><b>4.</b> Admin memberi instruksi pembayaran.</li><li><b>5.</b> Saldo ditambahkan sekali setelah pembayaran diverifikasi.</li></ol></SectionCard></div></>}

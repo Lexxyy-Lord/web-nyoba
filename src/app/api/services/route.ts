@@ -1,0 +1,1 @@
+import{requireApiUser}from"@/lib/auth/guards";import{rumahOtp}from"@/lib/rumahotp/services";import{fail,ok}from"@/lib/http";export async function GET(){try{await requireApiUser();return ok(await rumahOtp.getServices())}catch(e){return fail(e)}}
