@@ -27,29 +27,72 @@ jobs:
           ref: agent/fix-otpmarket-pterodactyl
           fetch-depth: 0
 
-      - name: Validate source parts
+      - name: Skip repeated failed diagnostic
+        id: guard
         shell: bash
         run: |
-          set -euo pipefail
-          test -d .source
-          test "$(find .source -maxdepth 1 -type f -name 'part-*' | wc -l)" -ge 10
+          if [ -f .github/expand-status ] && [ "$(cat .github/expand-status)" != "0" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
 
-      - name: Expand source archive
+      - name: Decode and expand source
+        if: steps.guard.outputs.skip != 'true'
         shell: bash
         run: |
-          set -euo pipefail
-          cat .source/part-* > /tmp/otpmarket-source.tar.gz.b64
-          base64 --decode /tmp/otpmarket-source.tar.gz.b64 > /tmp/otpmarket-source.tar.gz
-          tar -tzf /tmp/otpmarket-source.tar.gz >/dev/null
-          tar -xzf /tmp/otpmarket-source.tar.gz -C .
-          rm -rf .source .github/workflows/expand-source.yml
+          set +e
+          mkdir -p .github
+          {
+            echo "Source files:"
+            find .source -maxdepth 1 -type f -name 'part-*' -printf '%f %s bytes\n' | sort
+            echo "Combined size:"
+            cat .source/part-* > /tmp/otpmarket-source.tar.gz.b64
+            wc -c /tmp/otpmarket-source.tar.gz.b64
+            echo "Decode archive:"
+            base64 --decode --ignore-garbage /tmp/otpmarket-source.tar.gz.b64 > /tmp/otpmarket-source.tar.gz
+            decode_status=$?
+            echo "decode_status=$decode_status"
+            file /tmp/otpmarket-source.tar.gz
+            sha256sum /tmp/otpmarket-source.tar.gz
+            echo "Validate archive:"
+            tar -tzf /tmp/otpmarket-source.tar.gz >/tmp/otpmarket-files.txt
+            tar_status=$?
+            echo "tar_status=$tar_status"
+            head -30 /tmp/otpmarket-files.txt
+            if [ "$decode_status" -eq 0 ] && [ "$tar_status" -eq 0 ]; then
+              echo "Extract archive:"
+              tar -xzf /tmp/otpmarket-source.tar.gz -C .
+              extract_status=$?
+            else
+              extract_status=1
+            fi
+            echo "extract_status=$extract_status"
+            if [ "$decode_status" -eq 0 ] && [ "$tar_status" -eq 0 ] && [ "$extract_status" -eq 0 ]; then
+              status=0
+            else
+              status=1
+            fi
+            echo "$status" > .github/expand-status
+          } > .github/expand-debug.log 2>&1
+          exit 0
 
-      - name: Commit expanded project
+      - name: Commit result
+        if: steps.guard.outputs.skip != 'true'
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "restore complete OTPMarket source"
-          git push origin HEAD:agent/fix-otpmarket-pterodactyl
+          status="$(cat .github/expand-status)"
+          if [ "$status" = "0" ]; then
+            rm -rf .source .github/workflows/expand-source.yml .github/expand-debug.log .github/expand-status .github/FIX_IN_PROGRESS*.md
+            git add -A
+            git commit -m "restore complete OTPMarket source"
+            git push origin HEAD:agent/fix-otpmarket-pterodactyl
+          else
+            git add .github/expand-debug.log .github/expand-status
+            git commit -m "capture source expansion failure"
+            git push origin HEAD:agent/fix-otpmarket-pterodactyl
+            exit 1
+          fi
