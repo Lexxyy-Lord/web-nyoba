@@ -70,9 +70,9 @@ jobs:
       - name: Production build
         run: npm run build
 
-      - name: Prepare test database
+      - name: Deploy migration and seed test database
         run: |
-          npx prisma db push --skip-generate
+          npm run db:migrate
           npm run db:seed
 
       - name: Install Playwright Chromium
