@@ -29,31 +29,68 @@ jobs:
         id: staging
         shell: bash
         run: |
-          if find .source -maxdepth 1 -type f -name 'part-*' -print -quit 2>/dev/null | grep -q .; then
+          if [ -f .github/expand-status ]; then
+            echo "available=false" >> "$GITHUB_OUTPUT"
+          elif find .source -maxdepth 1 -type f -name 'part-*' -print -quit 2>/dev/null | grep -q .; then
             echo "available=true" >> "$GITHUB_OUTPUT"
           else
             echo "available=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Decode and expand source
+      - name: Diagnose and expand source
         if: steps.staging.outputs.available == 'true'
         shell: bash
         run: |
-          set -euo pipefail
-          test "$(find .source -maxdepth 1 -type f -name 'part-*' | wc -l)" -ge 10
+          set +e
+          mkdir -p .github
+          exec > >(tee .github/expand-debug.log) 2>&1
+          echo "== source parts =="
+          find .source -maxdepth 1 -type f -name 'part-*' -printf '%f %s bytes\n' | sort
+          echo "== combine =="
           cat .source/part-* > /tmp/otpmarket-source.tar.gz.b64
+          wc -c /tmp/otpmarket-source.tar.gz.b64
+          sha256sum /tmp/otpmarket-source.tar.gz.b64
+          echo "== decode =="
           base64 --decode --ignore-garbage /tmp/otpmarket-source.tar.gz.b64 > /tmp/otpmarket-source.tar.gz
-          tar -tzf /tmp/otpmarket-source.tar.gz >/dev/null
-          tar -xzf /tmp/otpmarket-source.tar.gz -C .
-          rm -rf .source .github/FIX_IN_PROGRESS*.md .github/expand-debug.log .github/expand-status
+          decode_status=$?
+          echo "decode_status=$decode_status"
+          wc -c /tmp/otpmarket-source.tar.gz
+          file /tmp/otpmarket-source.tar.gz
+          sha256sum /tmp/otpmarket-source.tar.gz
+          echo "== tar validation =="
+          tar -tzvf /tmp/otpmarket-source.tar.gz > /tmp/otpmarket-files.txt 2>&1
+          tar_status=$?
+          echo "tar_status=$tar_status"
+          head -60 /tmp/otpmarket-files.txt
+          if [ "$decode_status" -eq 0 ] && [ "$tar_status" -eq 0 ]; then
+            echo "== extraction =="
+            tar -xzf /tmp/otpmarket-source.tar.gz -C .
+            extract_status=$?
+          else
+            extract_status=1
+          fi
+          echo "extract_status=$extract_status"
+          if [ "$decode_status" -eq 0 ] && [ "$tar_status" -eq 0 ] && [ "$extract_status" -eq 0 ]; then
+            echo 0 > .github/expand-status
+          else
+            echo 1 > .github/expand-status
+          fi
+          exit 0
 
-      - name: Commit expanded project
+      - name: Commit diagnostic or expanded source
         if: steps.staging.outputs.available == 'true'
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "restore complete OTPMarket source"
+          status="$(cat .github/expand-status)"
+          if [ "$status" = "0" ]; then
+            rm -rf .source .github/FIX_IN_PROGRESS*.md .github/expand-debug.log .github/expand-status
+            git add -A
+            git commit -m "restore complete OTPMarket source"
+          else
+            git add .github/expand-debug.log .github/expand-status
+            git commit -m "capture OTPMarket source expansion diagnostics"
+          fi
           git push origin HEAD:agent/fix-otpmarket-pterodactyl
