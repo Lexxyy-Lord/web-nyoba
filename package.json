@@ -2,11 +2,14 @@
   "name": "otpmarket",
   "version": "1.0.0",
   "private": true,
-  "engines": { "node": ">=20.9.0" },
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
-    "start": "next start",
+    "build": "prisma generate && next build && node scripts/prepare-standalone.mjs",
+    "start": "node scripts/pterodactyl-start.mjs",
+    "start:next": "next start",
     "start:standalone": "node .next/standalone/server.js",
     "lint": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
@@ -67,5 +70,7 @@
     "typescript": "^5.9.3",
     "vitest": "^4.0.10"
   },
-  "prisma": { "seed": "tsx prisma/seed.ts" }
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  }
 }
