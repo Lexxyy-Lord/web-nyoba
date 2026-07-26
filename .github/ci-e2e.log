@@ -1,0 +1,496 @@
+
+> otpmarket@1.0.0 test:e2e
+> playwright test
+
+
+Running 8 tests using 1 worker
+
+[1/8] [chromium] › tests/e2e/auth-and-purchase.spec.ts:26:5 › register, admin credit, mock purchase, and OTP order flow
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[2/8] (retries) [chromium] › tests/e2e/auth-and-purchase.spec.ts:26:5 › register, admin credit, mock purchase, and OTP order flow (retry #1)
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2160008483'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2160008483'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2160008483'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2160008483'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2160008483'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2160008483'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2160008483'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2160008483'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2160008483'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2160008483'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+[WebServer] ⨯ Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server". Or maybe you meant to call this function rather than return it.
+[WebServer]   {$$typeof: ..., render: function, displayName: ...}
+[WebServer]                           ^^^^^^^^
+[WebServer]     at stringify (<anonymous>) {
+[WebServer]   digest: '2754827920'
+[WebServer] }
+
+  1) [chromium] › tests/e2e/auth-and-purchase.spec.ts:26:5 › register, admin credit, mock purchase, and OTP order flow 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Keluar' })
+
+
+      53 |   expect(user).not.toBeNull();
+      54 |
+    > 55 |   await page.getByRole("button", { name: "Keluar" }).click();
+         |                                                      ^
+      56 |   await login(
+      57 |     page,
+      58 |     process.env.SEED_ADMIN_EMAIL ?? "admin@example.com",
+        at /home/runner/work/web-nyoba/web-nyoba/tests/e2e/auth-and-purchase.spec.ts:55:54
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium/error-context.md
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Keluar' })
+
+
+      53 |   expect(user).not.toBeNull();
+      54 |
+    > 55 |   await page.getByRole("button", { name: "Keluar" }).click();
+         |                                                      ^
+      56 |   await login(
+      57 |     page,
+      58 |     process.env.SEED_ADMIN_EMAIL ?? "admin@example.com",
+        at /home/runner/work/web-nyoba/web-nyoba/tests/e2e/auth-and-purchase.spec.ts:55:54
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/error-context.md
+
+    Error Context: test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/auth-and-purchase-register-fabe1-purchase-and-OTP-order-flow-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[3/8] [chromium] › tests/e2e/responsive.spec.ts:4:7 › / has no horizontal overflow
+[4/8] [chromium] › tests/e2e/responsive.spec.ts:4:7 › /login has no horizontal overflow
+[5/8] [chromium] › tests/e2e/responsive.spec.ts:4:7 › /register has no horizontal overflow
+[6/8] [mobile] › tests/e2e/auth-and-purchase.spec.ts:26:5 › register, admin credit, mock purchase, and OTP order flow
+[7/8] [mobile] › tests/e2e/responsive.spec.ts:4:7 › / has no horizontal overflow
+[8/8] [mobile] › tests/e2e/responsive.spec.ts:4:7 › /login has no horizontal overflow
+[9/8] [mobile] › tests/e2e/responsive.spec.ts:4:7 › /register has no horizontal overflow
+  1 failed
+    [chromium] › tests/e2e/auth-and-purchase.spec.ts:26:5 › register, admin credit, mock purchase, and OTP order flow 
+  1 skipped
+  6 passed (2.1m)
