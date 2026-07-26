@@ -47,3 +47,5 @@ jobs:
           git add -A
           git commit -m "restore complete OTPMarket source"
           git push
+
+# Retry trigger after workflow registration.
