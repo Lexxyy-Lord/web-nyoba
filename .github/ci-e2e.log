@@ -1,0 +1,83 @@
+
+> otpmarket@1.0.0 test:e2e
+> playwright test
+
+
+Running 14 tests using 1 worker
+
+[1/14] [chromium] › tests/e2e/auth-and-purchase.spec.ts:28:5 › register, admin credit, mock purchase, and OTP order flow
+[2/14] [chromium] › tests/e2e/deposit-approval.spec.ts:26:5 › manual WhatsApp deposit can be approved only once by admin
+[3/14] (retries) [chromium] › tests/e2e/deposit-approval.spec.ts:26:5 › manual WhatsApp deposit can be approved only once by admin (retry #1)
+  1) [chromium] › tests/e2e/deposit-approval.spec.ts:26:5 › manual WhatsApp deposit can be approved only once by admin 
+
+    Error: expect(received).toContain(expected) // indexOf
+
+    Expected substring: "Rp50.000"
+    Received string:    "https://wa.me/6282141218134?text=Halo%20Admin%20OTPMarket%2C%20saya%20ingin%20deposit%20saldo.%0A%0AID%20Deposit%3A%20DEP2026072706225737687B6F%0ANominal%3A%20Rp%C2%A050.000%0AUser%20ID%3A%20cms2ublhf000t4s9r3297ooae%0A%0AMohon%20kirim%20instruksi%20pembayaran."
+
+      69 |       "https://wa.me/6282141218134",
+      70 |     );
+    > 71 |     expect(created.body.data.whatsappUrl).toContain("Rp50.000");
+         |                                           ^
+      72 |
+      73 |     const depositId = created.body.data.deposit.id as string;
+      74 |     const depositReference = created.body.data.deposit
+        at /home/runner/work/web-nyoba/web-nyoba/tests/e2e/deposit-approval.spec.ts:71:43
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/deposit-approval-manual-Wh-12a11-approved-only-once-by-admin-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/deposit-approval-manual-Wh-12a11-approved-only-once-by-admin-chromium/error-context.md
+
+    Error Context: test-results/deposit-approval-manual-Wh-12a11-approved-only-once-by-admin-chromium/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(received).toContain(expected) // indexOf
+
+    Expected substring: "Rp50.000"
+    Received string:    "https://wa.me/6282141218134?text=Halo%20Admin%20OTPMarket%2C%20saya%20ingin%20deposit%20saldo.%0A%0AID%20Deposit%3A%20DEP20260727062259A9E79743%0ANominal%3A%20Rp%C2%A050.000%0AUser%20ID%3A%20cms2ubmn800124s9rvijxnig5%0A%0AMohon%20kirim%20instruksi%20pembayaran."
+
+      69 |       "https://wa.me/6282141218134",
+      70 |     );
+    > 71 |     expect(created.body.data.whatsappUrl).toContain("Rp50.000");
+         |                                           ^
+      72 |
+      73 |     const depositId = created.body.data.deposit.id as string;
+      74 |     const depositReference = created.body.data.deposit
+        at /home/runner/work/web-nyoba/web-nyoba/tests/e2e/deposit-approval.spec.ts:71:43
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/deposit-approval-manual-Wh-12a11-approved-only-once-by-admin-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/deposit-approval-manual-Wh-12a11-approved-only-once-by-admin-chromium-retry1/error-context.md
+
+    Error Context: test-results/deposit-approval-manual-Wh-12a11-approved-only-once-by-admin-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/deposit-approval-manual-Wh-12a11-approved-only-once-by-admin-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/deposit-approval-manual-Wh-12a11-approved-only-once-by-admin-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[4/14] [chromium] › tests/e2e/responsive.spec.ts:4:7 › / has no horizontal overflow
+[5/14] [chromium] › tests/e2e/responsive.spec.ts:4:7 › /login has no horizontal overflow
+[6/14] [chromium] › tests/e2e/responsive.spec.ts:4:7 › /register has no horizontal overflow
+[7/14] [chromium] › tests/e2e/routes-smoke.spec.ts:71:7 › route smoke checks › all public routes render without HTTP or runtime errors
+[8/14] [chromium] › tests/e2e/routes-smoke.spec.ts:77:7 › route smoke checks › all user and admin routes render for super admin
+[9/14] [mobile] › tests/e2e/auth-and-purchase.spec.ts:28:5 › register, admin credit, mock purchase, and OTP order flow
+[10/14] [mobile] › tests/e2e/deposit-approval.spec.ts:26:5 › manual WhatsApp deposit can be approved only once by admin
+[11/14] [mobile] › tests/e2e/responsive.spec.ts:4:7 › / has no horizontal overflow
+[12/14] [mobile] › tests/e2e/responsive.spec.ts:4:7 › /login has no horizontal overflow
+[13/14] [mobile] › tests/e2e/responsive.spec.ts:4:7 › /register has no horizontal overflow
+[14/14] [mobile] › tests/e2e/routes-smoke.spec.ts:71:7 › route smoke checks › all public routes render without HTTP or runtime errors
+[15/14] [mobile] › tests/e2e/routes-smoke.spec.ts:77:7 › route smoke checks › all user and admin routes render for super admin
+  1 failed
+    [chromium] › tests/e2e/deposit-approval.spec.ts:26:5 › manual WhatsApp deposit can be approved only once by admin 
+  3 skipped
+  10 passed (17.5s)
