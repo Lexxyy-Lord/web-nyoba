@@ -68,7 +68,10 @@ test(
     expect(created.body.data.whatsappUrl).toContain(
       "https://wa.me/6282141218134",
     );
-    expect(created.body.data.whatsappUrl).toContain("Rp50.000");
+
+    const whatsappText =
+      new URL(created.body.data.whatsappUrl).searchParams.get("text") ?? "";
+    expect(whatsappText).toMatch(/Rp\s*50\.000/);
 
     const depositId = created.body.data.deposit.id as string;
     const depositReference = created.body.data.deposit
